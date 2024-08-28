@@ -1,13 +1,18 @@
-public class MaxFunction {
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Welcome to application!");
-        System.out.println(maxint(10,25,12));
+        System.out.println("Hello world!");
+        System.out.println(maxFloat(10.2f,25.2f,30.1f));
     }
-    static int maxint(int a , int b , int c){
-        int max = 0;
-        max = Math.max(a , b);
-        max = Math.max(max , c);
 
-        return max;
+    static float maxFloat(float a, float b , float c){
+        if(a > b && a > c){
+            return a;
+        }
+        else if(b > a && b > c){
+            return b;
+        }
+        else {
+            return c;
+        }
     }
 }
