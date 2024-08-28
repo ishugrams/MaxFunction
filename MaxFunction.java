@@ -1,35 +1,38 @@
-
-
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Welcome to apllication!");
+        System.out.println("Welcome to the application!");
 
+        Compare<Integer> integerCompare = new Compare<>(10, 15, 20);
+        System.out.println("Maximum of integers: " + integerCompare.testMaximum());
 
-        Compare<Integer> c = new Compare<>(10, 15, 20);
-        System.out.println(c.compare(c.a, c.b, c.c));
+        Compare<Double> doubleCompare = new Compare<>(3.5, 2.5, 4.1);
+        System.out.println("Maximum of doubles: " + doubleCompare.testMaximum());
     }
 }
 
-class Compare<T>{
-    T a;
-    T b;
-    T c;
+class Compare<T extends Comparable<T>> {
+    private T a;
+    private T b;
+    private T c;
 
-    Compare(T a , T b ,T c){
+    Compare(T a, T b, T c) {
         this.a = a;
         this.b = b;
-        this.c  = c;
+        this.c = c;
     }
 
-    public <T extends Comparable<T>> T compare(T a ,T b ,T c){
+    public T testMaximum() {
+        return Compare.testMaximum(a, b, c);
+    }
+
+    public static <T extends Comparable<T>> T testMaximum(T a, T b, T c) {
         T max = a;
-        if(b.compareTo(max) >0){
+        if (b.compareTo(max) > 0) {
             max = b;
         }
-        else if(c.compareTo(max) > 0){
+        if (c.compareTo(max) > 0) {
             max = c;
         }
-
         return max;
     }
 }
