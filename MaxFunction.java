@@ -3,10 +3,10 @@ public class Main {
         System.out.println("Welcome to the application!");
 
         Compare<Integer> integerCompare = new Compare<>(10, 15, 20, 25, 5);
-        System.out.println("Maximum of integers: " + integerCompare.testMaximum());
+        integerCompare.testMaximum();  // This will print the maximum value to stdout
 
         Compare<Double> doubleCompare = new Compare<>(3.5, 2.5, 4.1, 5.2, 1.8);
-        System.out.println("Maximum of doubles: " + doubleCompare.testMaximum());
+        doubleCompare.testMaximum();  // This will print the maximum value to stdout
     }
 }
 
@@ -19,7 +19,9 @@ class Compare<T extends Comparable<T>> {
     }
 
     public T testMaximum() {
-        return Compare.testMaximum(values);
+        T max = Compare.testMaximum(values);
+        printMax(max);
+        return max;
     }
 
     public static <T extends Comparable<T>> T testMaximum(T... values) {
@@ -34,5 +36,9 @@ class Compare<T extends Comparable<T>> {
             }
         }
         return max;
+    }
+
+    public void printMax(T max) {
+        System.out.println("Maximum value: " + max);
     }
 }
