@@ -1,37 +1,29 @@
+
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Welcome to application");
+        System.out.println("Welcome to apllication!");
 
-        System.out.println(maxint(10,25,12));
-        System.out.println(maxFloat(10.2f,25.2f,30.1f));
-        System.out.println(maxString("Apple", "Peach" , "Banana"));
+
+        Compare<Integer> c = new Compare<>(10, 15, 20);
+        System.out.println(c.compare(c.a, c.b, c.c));
     }
-    static int maxint(int a , int b , int c){
-        int max = 0;
-        max = Math.max(a , b);
-        max = Math.max(max , c);
+}
 
-        return max;
+class Compare<T>{
+    T a;
+    T b;
+    T c;
 
-
+    Compare(T a , T b ,T c){
+        this.a = a;
+        this.b = b;
+        this.c  = c;
     }
 
-    static float maxFloat(float a, float b , float c){
-        if(a > b && a > c){
-            return a;
-        }
-        else if(b > a && b > c){
-            return b;
-        }
-        else {
-            return c;
-        }
-
-    }
-    static String maxString(String a , String b, String c){
-        String max = a;
-
-        if(b.compareTo(max) > 0){
+    public <T extends Comparable<T>> T compare(T a ,T b ,T c){
+        T max = a;
+        if(b.compareTo(max) >0){
             max = b;
         }
         else if(c.compareTo(max) > 0){
